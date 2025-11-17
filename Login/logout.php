@@ -2,11 +2,11 @@
 /**
  * CIERRE DE SESIÓN - DESTRUCCIÓN SEGURA
  * 
- * ✅ SEGURIDAD: Destrucción completa de la sesión
- * ✅ REDIRECCIÓN: Al login con mensaje de confirmación
- * ✅ LIMPIEZA: Elimina todos los datos de sesión
+ *  SEGURIDAD: Destrucción completa de la sesión
+ *  REDIRECCIÓN: Al login con mensaje de confirmación
+ *  LIMPIEZA: Elimina todos los datos de sesión
  * 
- * 🌐 ACCESO: http://localhost/Login/logout.php
+ *  ACCESO: http://localhost/Login/logout.php
  */
 
 // Incluir archivos necesarios
@@ -33,8 +33,9 @@ $auth->cerrarSesion();
 session_start();
 
 // Establecer mensaje de éxito
-setSuccess("👋 ¡Sesión cerrada correctamente! Esperamos verte pronto.");
+setSuccess(" ¡Sesión cerrada correctamente! Esperamos verte pronto.");
 
 // Redirigir al login
 redirect('pages/login.php');
+
 ?>
