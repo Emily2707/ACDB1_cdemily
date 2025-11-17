@@ -1,13 +1,13 @@
 <?php
 /**
  * ============================================================
- *  🔐 SISTEMA DE AUTENTICACIÓN (AUTH.PHP)
+ *   SISTEMA DE AUTENTICACIÓN (AUTH.PHP)
  * ------------------------------------------------------------
  *  Contiene toda la lógica de:
- *   ✔ Registro seguro
- *   ✔ Inicio de sesión
- *   ✔ Cierre de sesión
- *   ✔ Consulta de usuario autenticado
+ *    Registro seguro
+ *    Inicio de sesión
+ *    Cierre de sesión
+ *    Consulta de usuario autenticado
  *
  *  Utiliza:
  *   - PDO (desde /config/database.php)
@@ -143,3 +143,4 @@ class Auth
         return $stmt->fetch(); // Retorna array asociativo del usuario
     }
 }
+
