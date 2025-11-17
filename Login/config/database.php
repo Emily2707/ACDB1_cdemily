@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- *   CONFIGURACIÓN DE CONEXIÓN A BASE DE DATOS (PDO)
+ *  📌 CONFIGURACIÓN DE CONEXIÓN A BASE DE DATOS (PDO)
  * ------------------------------------------------------------
  *  Este archivo maneja la conexión principal del sistema.
  *  Utiliza PDO para mayor seguridad y soporte moderno.
@@ -46,11 +46,10 @@ class Database
         } catch (PDOException $e) {
 
             // Mensaje claro si la BD falla
-            die(" ERROR DE CONEXIÓN A LA BASE DE DATOS: " . $e->getMessage());
+            die("❌ ERROR DE CONEXIÓN A LA BASE DE DATOS: " . $e->getMessage());
         }
 
         return $this->conn;
     }
 }
-
 

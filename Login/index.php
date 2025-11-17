@@ -1,19 +1,16 @@
 <?php
 /**
- * PÁGINA PRINCIPAL - REDIRECCIÓN AUTOMÁTICA
- * 
- * LÓGICA: Redirige usuarios basándose en su estado de autenticación
- * EFICIENCIA: No contiene HTML, solo lógica de redirección
+ * PÁGINA PRINCIPAL
+ * Redirige según el estado del usuario
  */
 
 require_once 'includes/functions.php';
+require_once 'includes/Auth.php';
 
-// Redirigir basado en el estado de autenticación
-if (isLoggedIn()) {
-    redirect('pages/dashboard.php');  // Usuarios logueados → Dashboard
+$auth = new Auth();
+
+if ($auth->estaLogueado()) {
+    redirect('pages/dashboard.php');
 } else {
-    redirect('pages/login.php');      // Usuarios no logueados → Login
+    redirect('pages/login.php');
 }
-
-// No se necesita contenido HTML ya que es solo redirección
-?>

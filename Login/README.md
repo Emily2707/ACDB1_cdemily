@@ -1,18 +1,18 @@
-# Sistema de Autenticación en PHP
+# 🔐 Sistema de Autenticación en PHP
 
 Sistema completo de login y registro de usuarios, desarrollado con **PHP puro**, **MySQL** y diseño moderno. Incluye manejo seguro de sesiones, encriptación de contraseñas con bcrypt, validaciones del lado del servidor y protección contra ataques comunes como SQL Injection y XSS.
 
 ---
 
-## Características Principales
+## 🚀 Características Principales
 
-### Autenticación Segura
+### 🔑 Autenticación Segura
 - **Registro de usuarios** con validación completa
 - **Inicio de sesión** con verificación de credenciales
 - **Cierre de sesión** seguro con destrucción total de la sesión
 - **Sesiones persistentes** y seguras
 
-### Medidas de Seguridad
+### 🛡️ Medidas de Seguridad
 - **Contraseñas encriptadas** con `password_hash()` (bcrypt)
 - **Protección SQL Injection** usando PDO y prepared statements
 - **Prevención XSS** con `htmlspecialchars()`
@@ -21,14 +21,14 @@ Sistema completo de login y registro de usuarios, desarrollado con **PHP puro**,
 - **Mensajes flash** para feedback de usuario
 - **Protección básica CSRF** con tokens de sesión
 
-### Interfaz de Usuario
+### 🎨 Interfaz de Usuario
 - **Diseño moderno** inspirado en plataformas populares
 - **Responsive design** para móviles y desktop
 - **Bootstrap 5** integrado para componentes UI
 - **CSS inline optimizado** para mejor rendimiento
 - **UX mejorada** con preservación de datos en errores
 
-### Funcionalidades Adicionales
+### 📊 Funcionalidades Adicionales
 - **Dashboard protegido** para usuarios autenticados
 - **Página de perfil** con información del usuario
 - **Redirección automática** basada en estado de autenticación
@@ -37,7 +37,7 @@ Sistema completo de login y registro de usuarios, desarrollado con **PHP puro**,
 
 ---
 
-## Estructura del Proyecto
+## 📂 Estructura del Proyecto
 
 ```
 Login/
@@ -60,7 +60,7 @@ Login/
 
 ---
 
-## Instalación y Configuración
+## 🛠️ Instalación y Configuración
 
 ### Prerrequisitos
 - **Servidor web**: Apache/Nginx (recomendado XAMPP/WAMP para desarrollo)
@@ -108,7 +108,7 @@ Login/
 
 ---
 
-## Uso del Sistema
+## 📖 Uso del Sistema
 
 ### Flujo de Usuario
 1. **Acceso inicial**: `index.php` redirige según estado de autenticación
@@ -128,7 +128,7 @@ Login/
 
 ---
 
-## Tecnologías Utilizadas
+## 🔧 Tecnologías Utilizadas
 
 - **Backend**: PHP 7.4+
 - **Base de Datos**: MySQL con PDO
@@ -139,7 +139,7 @@ Login/
 
 ---
 
-## Medidas de Seguridad Implementadas
+## 🛡️ Medidas de Seguridad Implementadas
 
 ### Autenticación
 - **Hash de contraseñas**: bcrypt con salt automático
@@ -159,7 +159,7 @@ Login/
 
 ---
 
-## Notas de Desarrollo
+## 📝 Notas de Desarrollo
 
 ### Estructura del Código
 - **Clase Database**: Maneja conexiones PDO seguras
@@ -185,7 +185,7 @@ CREATE TABLE usuarios (
 
 ---
 
-## Solución de Problemas
+## 🚨 Solución de Problemas
 
 ### Error de Conexión a BD
 - Verifica que MySQL esté ejecutándose

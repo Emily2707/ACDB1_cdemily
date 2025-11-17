@@ -1,13 +1,13 @@
 <?php
 /**
  * ============================================================
- *   FUNCIONES AUXILIARES DEL SISTEMA
+ *  📌 FUNCIONES AUXILIARES DEL SISTEMA
  * ------------------------------------------------------------
  *  Este archivo contiene:
- *    Manejo de sesiones y mensajes flash
- *    Sanitización de datos
- *    Redirecciones seguras
- *    Math CAPTCHA para evitar bots
+ *   ✔ Manejo de sesiones y mensajes flash
+ *   ✔ Sanitización de datos
+ *   ✔ Redirecciones seguras
+ *   ✔ Math CAPTCHA local
  * ============================================================
  */
 
@@ -16,10 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 /* ============================================================
-     FUNCIÓN: Sanitizar datos de entrada
-   ------------------------------------------------------------
-   - Previene inyecciones XSS
-   - Elimina espacios innecesarios
+   🚀 SANITIZAR DATOS
    ============================================================ */
 function sanitizeInput($data)
 {
@@ -27,10 +24,7 @@ function sanitizeInput($data)
 }
 
 /* ============================================================
-    FUNCIÓN: Redirección segura
-   ------------------------------------------------------------
-   - Evita reenvío de formularios
-   - Corta la ejecución inmediatamente
+   🚀 REDIRECCIÓN SEGURA
    ============================================================ */
 function redirect($url)
 {
@@ -39,9 +33,7 @@ function redirect($url)
 }
 
 /* ============================================================
-   SISTEMA DE MENSAJES FLASH (EXITO / ERROR)
-   ------------------------------------------------------------
-   - Permiten mostrar mensajes en la siguiente carga de página
+   🚀 MENSAJES FLASH
    ============================================================ */
 function setSuccess($msg)
 {
@@ -67,11 +59,7 @@ function displayMessage()
 }
 
 /* ============================================================
-    CAPTCHA MATEMÁTICO LOCAL (ANTI-BOTS)
-   ------------------------------------------------------------
-   - No depende de Google reCAPTCHA
-   - Pregunta simple como: "3 + 5"
-   - Se guarda la respuesta correcta en sesión
+   🤖 CAPTCHA LOCAL
    ============================================================ */
 function generateMathCaptcha()
 {
@@ -89,24 +77,8 @@ function verifyMathCaptcha($input)
         return false;
     }
 
-    $isCorrect = intval($input) === intval($_SESSION['captcha_answer']);
+    $correct = intval($input) === intval($_SESSION['captcha_answer']);
+    unset($_SESSION['captcha_answer']); 
 
-    unset($_SESSION['captcha_answer']); // Evita reuso del captcha
-
-    return $isCorrect;
+    return $correct;
 }
-
-/* ============================================================
-    FUNCIÓN: Requerir autenticación
-   ------------------------------------------------------------
-   - Bloquea acceso a páginas privadas
-   - Si no está logueado → redirige a login
-   ============================================================ */
-function requireAuth()
-{
-    if (empty($_SESSION['usuario_id'])) {
-        setError("Debes iniciar sesión para acceder a esta página.");
-        redirect('../pages/login.php');
-    }
-}
-
