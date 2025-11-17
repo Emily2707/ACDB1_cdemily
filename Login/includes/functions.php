@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- *  📌 FUNCIONES AUXILIARES DEL SISTEMA
+ *  FUNCIONES AUXILIARES DEL SISTEMA
  * ------------------------------------------------------------
  *  Este archivo contiene:
  *   ✔ Manejo de sesiones y mensajes flash
@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 /* ============================================================
-   🚀 SANITIZAR DATOS
+   SANITIZAR DATOS
    ============================================================ */
 function sanitizeInput($data)
 {
@@ -24,7 +24,7 @@ function sanitizeInput($data)
 }
 
 /* ============================================================
-   🚀 REDIRECCIÓN SEGURA
+   REDIRECCIÓN SEGURA
    ============================================================ */
 function redirect($url)
 {
@@ -33,7 +33,7 @@ function redirect($url)
 }
 
 /* ============================================================
-   🚀 MENSAJES FLASH
+   MENSAJES FLASH
    ============================================================ */
 function setSuccess($msg)
 {
@@ -59,7 +59,7 @@ function displayMessage()
 }
 
 /* ============================================================
-   🤖 CAPTCHA LOCAL
+    CAPTCHA LOCAL
    ============================================================ */
 function generateMathCaptcha()
 {

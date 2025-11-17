@@ -1,7 +1,7 @@
 <?php
 /**
  * ============================================================
- *  🔐 SISTEMA DE AUTENTICACIÓN (AUTH.PHP)
+ *  SISTEMA DE AUTENTICACIÓN (AUTH.PHP)
  * ------------------------------------------------------------
  *  Contiene:
  *   ✔ Registro de usuario

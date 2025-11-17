@@ -7,7 +7,7 @@
  *  - Registro de usuarios con validación del lado del servidor
  *  - Sanitización, manejo de errores, mensajes flash
  *  - Protección contra CSRF básico (session-based)
- *  - Math CAPTCHA local (sin claves externas)
+ *  - Math CAPTCHA local
  *  - Preservación de datos en caso de error para mejor UX
  * ============================================================
  */
@@ -87,7 +87,7 @@ unset($_SESSION['form_data']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- ============================================================
-         CSS INLINE (NO SE ELIMINA) — Solo optimizado/ordenado
+         CSS INLINE
          ============================================================ -->
     <style>
         * {

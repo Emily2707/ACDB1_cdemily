@@ -4,10 +4,10 @@
  *              PÁGINA DE PERFIL
  * =======================================================
  *
- * ✔ Requiere sesión activa (requireAuth)
- * ✔ Muestra información del usuario autenticado
- * ✔ Interfaz moderna con Bootstrap 5
- * ✔ Se mantiene el CSS inline original (por tu petición)
+ *  Requiere sesión activa (requireAuth)
+ *  Muestra información del usuario autenticado
+ *  Interfaz moderna con Bootstrap 5
+ *  Se mantiene el CSS inline original (por tu petición)
  */
 
 require_once __DIR__ . '/../includes/functions.php';
