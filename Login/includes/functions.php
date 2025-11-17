@@ -1,13 +1,13 @@
 <?php
 /**
  * ============================================================
- *  📌 FUNCIONES AUXILIARES DEL SISTEMA
+ *   FUNCIONES AUXILIARES DEL SISTEMA
  * ------------------------------------------------------------
  *  Este archivo contiene:
- *   ✔ Manejo de sesiones y mensajes flash
- *   ✔ Sanitización de datos
- *   ✔ Redirecciones seguras
- *   ✔ Math CAPTCHA para evitar bots
+ *    Manejo de sesiones y mensajes flash
+ *    Sanitización de datos
+ *    Redirecciones seguras
+ *    Math CAPTCHA para evitar bots
  * ============================================================
  */
 
@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 /* ============================================================
-   🚀 FUNCIÓN: Sanitizar datos de entrada
+     FUNCIÓN: Sanitizar datos de entrada
    ------------------------------------------------------------
    - Previene inyecciones XSS
    - Elimina espacios innecesarios
@@ -27,7 +27,7 @@ function sanitizeInput($data)
 }
 
 /* ============================================================
-   🚀 FUNCIÓN: Redirección segura
+    FUNCIÓN: Redirección segura
    ------------------------------------------------------------
    - Evita reenvío de formularios
    - Corta la ejecución inmediatamente
@@ -39,7 +39,7 @@ function redirect($url)
 }
 
 /* ============================================================
-   🚀 SISTEMA DE MENSAJES FLASH (EXITO / ERROR)
+   SISTEMA DE MENSAJES FLASH (EXITO / ERROR)
    ------------------------------------------------------------
    - Permiten mostrar mensajes en la siguiente carga de página
    ============================================================ */
@@ -67,7 +67,7 @@ function displayMessage()
 }
 
 /* ============================================================
-   🤖 CAPTCHA MATEMÁTICO LOCAL (ANTI-BOTS)
+    CAPTCHA MATEMÁTICO LOCAL (ANTI-BOTS)
    ------------------------------------------------------------
    - No depende de Google reCAPTCHA
    - Pregunta simple como: "3 + 5"
@@ -97,7 +97,7 @@ function verifyMathCaptcha($input)
 }
 
 /* ============================================================
-   🔐 FUNCIÓN: Requerir autenticación
+    FUNCIÓN: Requerir autenticación
    ------------------------------------------------------------
    - Bloquea acceso a páginas privadas
    - Si no está logueado → redirige a login
@@ -109,3 +109,4 @@ function requireAuth()
         redirect('../pages/login.php');
     }
 }
+
