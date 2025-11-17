@@ -4,20 +4,23 @@
  *  🔐 SISTEMA DE AUTENTICACIÓN (AUTH.PHP)
  * ------------------------------------------------------------
  *  Contiene:
- *   ✔ Registro
+ *   ✔ Registro de usuario
  *   ✔ Inicio de sesión
  *   ✔ Cierre de sesión
- *   ✔ Estado de usuario
+ *   ✔ Verificación de estado de sesión
+ *   ✔ Obtener usuario actual
+ *   ✔ Protección de páginas con requireAuth()
  *
- *  Usa PDO desde config/database.php
+ *  Usa conexión PDO desde config/database.php
  * ============================================================
  */
 
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    session_start(); // Iniciar sesión si no está activa
 }
 
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../config/database.php'; // Conexión a BD
+
 
 class Auth
 {
@@ -35,6 +38,7 @@ class Auth
        ============================================================ */
     public function registrarUsuario($nombre, $correo, $contraseña)
     {
+        // Validaciones básicas
         if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
             throw new Exception("Correo inválido.");
         }
@@ -43,6 +47,7 @@ class Auth
             throw new Exception("La contraseña debe tener mínimo 6 caracteres.");
         }
 
+        // Verificar si el correo ya existe
         $sql = "SELECT id FROM usuarios WHERE correo = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$correo]);
@@ -51,8 +56,10 @@ class Auth
             throw new Exception("El correo ya está registrado.");
         }
 
+        // Hash seguro
         $hash = password_hash($contraseña, PASSWORD_DEFAULT);
 
+        // Insertar
         $sql = "INSERT INTO usuarios (nombre, correo, contraseña) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
 
@@ -60,25 +67,31 @@ class Auth
     }
 
     /* ============================================================
-       ✔ INICIO DE SESIÓN
+       ✔ INICIAR SESIÓN
        ============================================================ */
     public function iniciarSesion($correo, $contraseña)
     {
+        // Buscar usuario por correo
         $sql = "SELECT * FROM usuarios WHERE correo = ? LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$correo]);
 
         $usuario = $stmt->fetch();
 
+        // Si no existe
         if (!$usuario) {
             throw new Exception("Credenciales incorrectas.");
         }
 
+        // Verificar contraseña
         if (!password_verify($contraseña, $usuario['contraseña'])) {
             throw new Exception("Credenciales incorrectas.");
         }
 
+        // Guardar datos mínimos en sesión
         $_SESSION['usuario_id'] = $usuario['id'];
+        $_SESSION['usuario_nombre'] = $usuario['nombre'];
+        $_SESSION['usuario_correo'] = $usuario['correo'];
         $_SESSION['login_time'] = time();
 
         return true;
@@ -95,7 +108,7 @@ class Auth
     }
 
     /* ============================================================
-       ✔ VERIFICAR ESTADO
+       ✔ SABER SI ESTÁ LOGUEADO
        ============================================================ */
     public function estaLogueado()
     {
@@ -103,7 +116,7 @@ class Auth
     }
 
     /* ============================================================
-       ✔ OBTENER USUARIO ACTUAL
+       ✔ OBTENER DATOS DEL USUARIO ACTUAL
        ============================================================ */
     public function obtenerUsuarioActual()
     {
@@ -116,5 +129,21 @@ class Auth
         $stmt->execute([$_SESSION['usuario_id']]);
 
         return $stmt->fetch();
+    }
+}
+
+
+/* ============================================================
+   ✔ FUNCIÓN GLOBAL requireAuth()
+   ------------------------------------------------------------
+   Esta función permite proteger páginas como dashboard,
+   profile, configuraciones, etc.
+   ============================================================ */
+function requireAuth()
+{
+    // Si el usuario NO está logueado → redirigir al login
+    if (!isset($_SESSION['usuario_id'])) {
+        header("Location: ../login.php");
+        exit();
     }
 }
